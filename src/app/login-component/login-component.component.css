@@ -1,0 +1,5 @@
+.mat-mdc-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

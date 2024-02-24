@@ -1,0 +1,69 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    @for (card of cards | async; track card) {
+    <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          @switch (card.title) { @case ('Bar Chart') {
+          <canvas
+            baseChart
+            [data]="barChartData"
+            [options]="chartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [type]="'bar'"
+          >
+          </canvas>
+          } @case ('Line Chart') {
+          <canvas
+            baseChart
+            [type]="'line'"
+            [data]="lineChartData"
+            [options]="chartOptions"
+            [legend]="lineChartLegend"
+          >
+          </canvas>
+
+          } @case ('Doughnut Chart') {<canvas
+            baseChart
+            [labels]="doughnutChartLabels"
+            [datasets]="doughnutChartDatasets"
+            [options]="chartOptions"
+            [legend]="true"
+            [type]="'doughnut'"
+          >
+          </canvas>
+          } @case ('Radar Chart') {
+          <canvas
+            baseChart
+            [datasets]="radarChartDatasets"
+            [options]="chartOptions"
+            [labels]="radarChartLabels"
+            [type]="'radar'"
+          >
+          </canvas
+          >} }
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>

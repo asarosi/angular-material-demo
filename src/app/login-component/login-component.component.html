@@ -1,0 +1,63 @@
+<div class="mt-8">
+  <div class="flex flex-1 justify-center items-stretch">
+    <form
+      [formGroup]="form"
+      novalidate
+      (ngSubmit)="onSubmit()"
+      class="flex justify-center"
+    >
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h1>Login</h1>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="flex flex-col pt-4">
+            <mat-form-field>
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" />
+              <mat-icon matPrefix>person</mat-icon>
+              @if (form.controls['username'].hasError('required')) {
+              <mat-error>Username is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" />
+              <mat-icon matPrefix>password</mat-icon>
+              @if (form.controls['password'].hasError('required')) {
+              <mat-error>Password is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">
+            Submit
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+
+    <mat-card style="background-color: #3f51b5" class="text-white ml-2">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Sign up</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="flex flex-col items-center justify-center">
+          <mat-icon class="my-4">assignment_ind</mat-icon>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button>Register</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
