@@ -4,7 +4,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    redirectTo: 'pages/dashboard',
   },
   {
     path: 'login',
