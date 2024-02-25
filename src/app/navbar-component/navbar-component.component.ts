@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'material-dashboard-demo-navbar-component',
@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponentComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  protected router = inject(Router);
 
   panelOpenState = false;
 

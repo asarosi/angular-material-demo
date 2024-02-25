@@ -1,3 +1,6 @@
+@if(router.url === '/login') {
+<router-outlet></router-outlet>
+} @else {
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -9,17 +12,40 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-accordion multi="true">
-      <mat-expansion-panel style="box-shadow: none">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel
+        style="box-shadow: none"
+        [expanded]="router.url.includes('/pages/')"
+      >
+        <mat-expansion-panel-header
+          style="font-size: initial; font-weight: initial; padding-left: 16px"
+        >
           <mat-panel-title> Pages </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
           <a mat-list-item [routerLink]="['/login']">Login</a>
-          <a mat-list-item [routerLink]="['/dashboard']">Dashboard</a>
-          <a mat-list-item [routerLink]="['/table']">Table</a>
+          <a
+            mat-list-item
+            [routerLink]="['/pages/dashboard']"
+            [activated]="router.url.includes('/dashboard')"
+            >Dashboard</a
+          >
+          <a
+            mat-list-item
+            [routerLink]="['/pages/table']"
+            [activated]="router.url.includes('/table')"
+            >Table</a
+          >
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        href="https://material.angular.io/components/categories"
+        target="_blank"
+        >Components</a
+      >
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -38,3 +64,4 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+}

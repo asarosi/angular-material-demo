@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'material-dashboard-demo-login-component',
@@ -25,12 +26,16 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class LoginComponentComponent {
   private fb = inject(FormBuilder);
-  form = this.fb.group({
+  private router = inject(Router);
+
+  public form = this.fb.group({
     username: [null, Validators.required],
     password: [null, Validators.required],
   });
 
   onSubmit(): void {
-    alert('Thanks!');
+    if (this.form.valid) {
+      this.router.navigate(['/pages/dashboard']);
+    }
   }
 }

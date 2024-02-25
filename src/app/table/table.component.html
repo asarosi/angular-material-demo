@@ -28,8 +28,14 @@
     <ng-container matColumnDef="usage">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Usage</th>
       <td mat-cell *matCellDef="let row">
-        <div>{{row.usage}}%</div>
-        <mat-progress-bar [mode]="'determinate'" [value]="row.usage">
+        <div>{{ row.usage }}%</div>
+        <mat-progress-bar
+          [color]="
+            row.usage > 75 ? 'primary' : row.usage > 25 ? 'accent' : 'warn'
+          "
+          [mode]="'determinate'"
+          [value]="row.usage"
+        >
         </mat-progress-bar>
       </td>
     </ng-container>
@@ -37,7 +43,9 @@
     <!-- Activity Column -->
     <ng-container matColumnDef="activity">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Activity</th>
-      <td mat-cell *matCellDef="let row">Last login: {{ row.activity }} d ago</td>
+      <td mat-cell *matCellDef="let row">
+        Last login: {{ row.activity }} d ago
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

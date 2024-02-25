@@ -40,10 +40,10 @@ export class DashboardComponentComponent {
       }
 
       return [
-        { title: 'Line Chart', cols: 2, rows: 1 },
+        { title: 'Line Chart', cols: 1, rows: 1 },
         { title: 'Radar Chart', cols: 1, rows: 2 },
         { title: 'Doughnut Chart', cols: 1, rows: 2 },
-        { title: 'Bar Chart', cols: 2, rows: 1 },
+        { title: 'Bar Chart', cols: 1, rows: 1 },
       ];
     })
   );
